@@ -1,26 +1,59 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#001427];
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* H1 - Hero */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 72px;
+    letter-spacing: 0%;
+  }
+
+  /* H2 - Sections */
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 41px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  /* Paragraphs */
+  p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 35px;
+    letter-spacing: 0%;
+  }
+
+  /* Hero paragraph (specifiek) */
+  .hero-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 35px;
+    letter-spacing: 0%;
+  }
+
+  /* Buttons */
+  button {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0.15em;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
