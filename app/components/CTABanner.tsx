@@ -30,14 +30,7 @@ const CTABanner = () => {
                   borderRadius: '40px',
                 }}
               />
-              {/* Desktop rounded corners */}
-              <style jsx>{`
-                @media (min-width: 1024px) {
-                  img {
-                    border-radius: 0 80px 80px 0 !important;
-                  }
-                }
-              `}</style>
+  
             </div>
             
             {/* Gradient Overlay - Mobile only */}
