@@ -298,10 +298,18 @@ const ContactFormSection = () => {
                 }}
               />
 
-              {/* Submit Button */}
-              <PrimaryButton type="submit" variant="solid">
+              {/* Submit Button - ZONDER type prop */}
+              <button
+                type="submit"
+                className="w-full bg-gym-gold text-gym-navy font-bold py-4 rounded-md hover:bg-gym-gold/90 transition-colors uppercase"
+                style={{
+                  fontFamily: 'Syne',
+                  fontSize: '16px',
+                  letterSpacing: '0.1em'
+                }}
+              >
                 SEND MESSAGE
-              </PrimaryButton>
+              </button>
             </form>
           </div>
 
