@@ -27,18 +27,15 @@ const IntroVideo = () => {
           <div className="relative flex-shrink-0 w-full lg:w-auto">
             {/* Video with Gradient Border */}
             <div 
-              className="relative overflow-hidden mx-auto"
+              className="relative overflow-hidden mx-auto h-[500px] lg:h-[650px]"
               style={{
                 width: '100%',
                 maxWidth: '364px',
-                height: '500px',
                 borderRadius: '25px',
                 border: '3px solid transparent',
                 background: 'linear-gradient(#002444, #002444) padding-box, linear-gradient(177.23deg, #E1AC46 2.31%, rgba(225, 172, 70, 0) 26.02%, #E1AC46 50.64%, rgba(225, 172, 70, 0.05) 77.09%, rgba(225, 172, 70, 0.65) 97.15%) border-box',
                 boxShadow: '30px 5px 99px 0px rgba(225, 172, 70, 0.35)',
               }}
-              // Desktop height override
-              className="lg:!h-[650px]"
             >
               <Image
                 src="/intro video.png"
@@ -114,7 +111,7 @@ const IntroVideo = () => {
                       width={18} 
                       height={18} 
                       alt="" 
-                      className="flex-shrink-0 lg:w-5 lg:h-5"
+                      className="flex-shrink-0 w-[18px] h-[18px] lg:w-[20px] lg:h-[20px]"
                     />
                     <p 
                       className="text-sm lg:text-[18px] leading-relaxed lg:leading-[35px]"
@@ -130,14 +127,13 @@ const IntroVideo = () => {
                 ))}
               </div>
 
-              {/* Google Reviews Badge - Mobile: Below content, Desktop: Absolute */}
+              {/* Google Reviews Badge */}
               <div 
-                className="flex flex-col items-center text-center mt-8 lg:mt-0 lg:absolute"
+                className="flex flex-col items-center text-center mt-8 mx-auto lg:absolute lg:right-0"
                 style={{
                   width: '138px',
+                  top: '518px'
                 }}
-                // Desktop positioning
-                className="lg:top-[518px] lg:right-0"
               >
                 {/* Google Logo */}
                 <Image 
