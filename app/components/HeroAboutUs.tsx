@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
@@ -9,24 +11,40 @@ const HeroAboutUs = () => {
         height: '384px'
       }}
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
+      {/* Background - Navy color */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: '#001427'
+        }}
+      />
+
+      {/* Background Image - Focus iets boven top */}
+      <div 
+        className="absolute top-0 w-full lg:w-4/5 h-full" 
+        style={{ 
+          right: '-20%'
+        }}
+      >
         <Image
-          src="/about-hero-team.png" // TODO: Replace with actual team photo
+          src="/about-hero-team.png"
           alt="Potentia Gym Team"
           fill
-          className="object-cover object-center lg:object-right"
+          className="object-cover"
+          style={{
+            objectPosition: 'center -50px'  // 20px verder omhoog
+          }}
           priority
         />
-        
-        {/* Gradient Overlay - Dark left to transparent right */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(269.84deg, rgba(0, 20, 39, 0.05) 11.49%, #001427 52.14%)'
-          }}
-        />
       </div>
+
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(269.84deg, rgba(0, 20, 39, 0.05) 11.49%, #001427 52.14%)'
+        }}
+      />
 
       {/* Content Container */}
       <div className="relative z-10 h-full flex items-center">
@@ -64,7 +82,7 @@ const HeroAboutUs = () => {
         </div>
       </div>
 
-      {/* Mobile: Extra dark overlay for better text readability */}
+      {/* Mobile: Extra dark overlay */}
       <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-black/30 via-transparent to-black/30" />
     </section>
   );
