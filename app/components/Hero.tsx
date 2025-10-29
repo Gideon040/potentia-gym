@@ -5,14 +5,28 @@ import OutlineButton from './OutlineButton';
 
 const Hero = () => {
   return (
-    <section className="relative w-full overflow-hidden rounded-b-[100px]" style={{ height: '789px' }}>
+    <section 
+      className="relative w-full overflow-hidden rounded-b-[50px] lg:rounded-b-[100px]" 
+      style={{ 
+        height: '600px',  // Mobile height
+      }}
+      // Desktop height via inline style for lg breakpoint
+    >
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          section {
+            height: 789px;
+          }
+        }
+      `}</style>
+
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/gym-background.png"
           alt="Gym background"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
         
@@ -41,19 +55,31 @@ const Hero = () => {
         <div className="max-w-[1440px] mx-auto w-full px-6 lg:px-16">
           
           {/* Left Side - Text & Buttons */}
-          <div className="max-w-xl space-y-6">
-            <h1 className="text-white">
+          <div className="max-w-xl space-y-4 lg:space-y-6 pt-20 lg:pt-0">
+            <h1 
+              className="text-white text-4xl sm:text-5xl lg:text-[65px] leading-tight lg:leading-[72px]"
+              style={{
+                fontFamily: 'Syne',
+                fontWeight: 700
+              }}
+            >
               The best gym in<br />
               Maarheze
             </h1>
             
-            <p className="hero-text text-white">
+            <p 
+              className="text-white text-base sm:text-lg lg:text-[22px] leading-relaxed lg:leading-[35px]"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 400
+              }}
+            >
               Train in Cranendonck's most modern gym, with a certified coach. 
               We'll make sure you never have to worry about your progress again. 
               We'll help you with training, nutrition, and mindset.
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-2">
               <PrimaryButton variant="solid">
                 Gratis Proefles
               </PrimaryButton>
@@ -66,7 +92,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Arrow - Right Bottom Corner */}
+      {/* Arrow - Right Bottom Corner - Desktop Only */}
       <div className="absolute z-20 hidden lg:block" style={{ 
         width: '608px', 
         height: '374px',

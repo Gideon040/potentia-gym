@@ -11,33 +11,34 @@ const IntroVideo = () => {
 
   return (
     <section 
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden py-12 lg:py-20"
       style={{
         background: `
           radial-gradient(48.81% 90.44% at 94.44% 9.56%, rgba(225, 172, 70, 0.55) 0%, #002444 50%),
           radial-gradient(31.08% 115.56% at 9.48% 98.36%, rgba(225, 172, 70, 0.25) 16.85%, rgba(45, 56, 62, 0.25) 100%),
           radial-gradient(35% 50% at 5% 95%, rgba(225, 172, 70, 0.2) 0%, transparent 60%)
         `,
-        paddingTop: '80px',
-        paddingBottom: '80px',
       }}
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-        <div className="flex flex-col lg:flex-row items-start" style={{ gap: '80px' }}>
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-20">
           
           {/* Left: Video Container */}
-          <div className="relative flex-shrink-0">
+          <div className="relative flex-shrink-0 w-full lg:w-auto">
             {/* Video with Gradient Border */}
             <div 
-              className="relative overflow-hidden"
+              className="relative overflow-hidden mx-auto"
               style={{
-                width: '364px',
-                height: '650px',
+                width: '100%',
+                maxWidth: '364px',
+                height: '500px',
                 borderRadius: '25px',
                 border: '3px solid transparent',
                 background: 'linear-gradient(#002444, #002444) padding-box, linear-gradient(177.23deg, #E1AC46 2.31%, rgba(225, 172, 70, 0) 26.02%, #E1AC46 50.64%, rgba(225, 172, 70, 0.05) 77.09%, rgba(225, 172, 70, 0.65) 97.15%) border-box',
                 boxShadow: '30px 5px 99px 0px rgba(225, 172, 70, 0.35)',
               }}
+              // Desktop height override
+              className="lg:!h-[650px]"
             >
               <Image
                 src="/intro video.png"
@@ -47,7 +48,7 @@ const IntroVideo = () => {
               />
             </div>
 
-            {/* Handwritten Text + Arrow - RECHTS VAN VIDEO */}
+            {/* Handwritten Text + Arrow - Desktop Only */}
             <div 
               className="absolute hidden lg:block"
               style={{
@@ -68,32 +69,24 @@ const IntroVideo = () => {
                 Watch our<br />intro video!
               </p>
               
-              {/* White Arrow - pointing left naar video */}
+              {/* White Arrow */}
               <div className="absolute" style={{ left: '-50px', top: '15px', transform: 'rotate(180deg)' }}>
                 <Image src="/white arrow.png" width={40} height={40} alt="" />
               </div>
             </div>
           </div>
 
-          {/* Right: Content - With absolute positioned Google badge */}
+          {/* Right: Content */}
           <div 
-            className="relative flex-shrink-0 text-white"
-            style={{
-              width: '743px',
-              maxWidth: '743px',
-              paddingTop: '46px'
-            }}
+            className="relative flex-1 text-white w-full"
           >
-            <div className="space-y-6">
+            <div className="space-y-4 lg:space-y-6">
               {/* Heading */}
               <h2 
-                className="text-gym-gold"
+                className="text-gym-gold text-2xl sm:text-3xl lg:text-[41px] leading-tight lg:leading-[52px]"
                 style={{
                   fontFamily: 'Syne',
                   fontWeight: 700,
-                  fontSize: '41px',
-                  lineHeight: '52px',
-                  marginBottom: '24px'
                 }}
               >
                 Ervaar de kracht van onze community – echte resultaten, echte verhalen
@@ -101,12 +94,10 @@ const IntroVideo = () => {
 
               {/* Body Text */}
               <p 
+                className="text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-[27px]"
                 style={{
                   fontFamily: 'Inter',
                   fontWeight: 400,
-                  fontSize: '18px',
-                  lineHeight: '27px',
-                  marginBottom: '32px'
                 }}
               >
                 Bij ons draait het om meer dan alleen fitness. Het gaat om motivatie, 
@@ -115,17 +106,22 @@ const IntroVideo = () => {
               </p>
 
               {/* Features with Checkmarks */}
-              <div className="grid grid-cols-2 gap-y-4 gap-x-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 lg:gap-y-4 lg:gap-x-12 mt-6 lg:mt-8">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <Image src="/check-mark.svg" width={20} height={20} alt="" />
+                  <div key={index} className="flex items-center gap-2 lg:gap-3">
+                    <Image 
+                      src="/check-mark.svg" 
+                      width={18} 
+                      height={18} 
+                      alt="" 
+                      className="flex-shrink-0 lg:w-5 lg:h-5"
+                    />
                     <p 
+                      className="text-sm lg:text-[18px] leading-relaxed lg:leading-[35px]"
                       style={{
                         fontFamily: 'Inter',
                         fontWeight: 400,
                         fontStyle: 'italic',
-                        fontSize: '18px',
-                        lineHeight: '35px',
                       }}
                     >
                       {feature}
@@ -133,46 +129,48 @@ const IntroVideo = () => {
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Google Reviews Badge - ABSOLUTE POSITIONED */}
-            <div 
-              className="absolute flex flex-col items-center text-center"
-              style={{
-                width: '138px',
-                height: '91px',
-                top: '518px',
-                right: '0'
-              }}
-            >
-              {/* Google Logo BOVEN */}
-              <Image src="/google.png" width={70} height={24} alt="Google" className="mb-2" />
-              
-              {/* Review Text ONDER (waar sterren waren) */}
-              <p 
-                className="text-white"
+              {/* Google Reviews Badge - Mobile: Below content, Desktop: Absolute */}
+              <div 
+                className="flex flex-col items-center text-center mt-8 lg:mt-0 lg:absolute"
                 style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  lineHeight: '21px',
+                  width: '138px',
                 }}
+                // Desktop positioning
+                className="lg:top-[518px] lg:right-0"
               >
-                We score <span className="text-gym-gold">5/5</span>
-              </p>
-              <p 
-                className="text-white"
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  lineHeight: '21px',
-                }}
-              >
-                based on 130 reviews!
-              </p>
+                {/* Google Logo */}
+                <Image 
+                  src="/google.png" 
+                  width={70} 
+                  height={24} 
+                  alt="Google" 
+                  className="mb-2" 
+                />
+                
+                {/* Review Text */}
+                <p 
+                  className="text-white text-sm"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 700,
+                    lineHeight: '21px',
+                  }}
+                >
+                  We score <span className="text-gym-gold">5/5</span>
+                </p>
+                <p 
+                  className="text-white text-sm"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 400,
+                    lineHeight: '21px',
+                  }}
+                >
+                  based on 130 reviews!
+                </p>
+              </div>
             </div>
-
           </div>
 
         </div>
