@@ -22,27 +22,27 @@ const Header = () => {
   const aanbodItems = [
     { 
       label: 'Gym Only', 
-      href: '/aanbod/gym-only',
+      href: '/gym-only',
       image: '/gym only.png'
     },
     { 
       label: 'Small Group Training', 
-      href: '/aanbod/small-group-training',
+      href: '/small-group-training',
       image: '/1 op 5 group.png'
     },
     { 
       label: '1 Op 12 Group Training', 
-      href: '/aanbod/1-op-12-group',
+      href: '/1-op-12-group',
       image: '/1 op 12 group.png'
     },
     { 
       label: 'Personal / Duo Training', 
-      href: '/aanbod/personal-duo',
+      href: '/personal-training',
       image: '/personal duo.png'
     },
     { 
       label: 'Reformer Pilates', 
-      href: '/aanbod/reformer-pilates',
+      href: '/reformer-pilates',
       image: '/reformer pilates.png'
     }
   ];

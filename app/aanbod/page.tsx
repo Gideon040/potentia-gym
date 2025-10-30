@@ -1,6 +1,6 @@
 import HeroAanbod from '../components/HeroAanbod';
-import PakkettenGrid from '../components/PakkettenGrid';
 import GezelligeSportschool from '../components/GezelligeSportschool';
+import PakkettenGrid from '../components/PakkettenGrid';
 import Testimonials from '../components/Testimonials';
 import CTABanner from '../components/CTABanner';
 

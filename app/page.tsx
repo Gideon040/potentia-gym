@@ -17,8 +17,8 @@ export default function Home() {
       <PersonalAttention />
       <Services />
       <Coaches />
-      <Testimonials />
       <IntroVideo />
+      <Testimonials />
       <CTABanner />
     </main>
   )
