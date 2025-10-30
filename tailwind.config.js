@@ -18,6 +18,21 @@ module.exports = {
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
       },
+      animation: {
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+      },
+      keyframes: {
+        'pulse-glow': {
+          '0%, 100%': { 
+            boxShadow: '0 0 15px rgba(225, 172, 70, 0.3), 0 0 30px rgba(225, 172, 70, 0.15)',
+            filter: 'drop-shadow(0 0 8px rgba(225, 172, 70, 0.2))'
+          },
+          '50%': { 
+            boxShadow: '0 0 25px rgba(225, 172, 70, 0.45), 0 0 45px rgba(225, 172, 70, 0.25)',
+            filter: 'drop-shadow(0 0 12px rgba(225, 172, 70, 0.35))'
+          },
+        }
+      }
     },
   },
   plugins: [],

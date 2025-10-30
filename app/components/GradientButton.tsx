@@ -26,6 +26,7 @@ const GradientButton = ({ children, href, onClick, className = '' }: GradientBut
         relative z-10
         ${baseStyles}
         ${className}
+        animate-pulse-glow
       `}
       style={{
         width: '198px',

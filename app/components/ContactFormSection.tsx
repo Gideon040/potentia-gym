@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import PrimaryButton from './PrimaryButton';
 
 const ContactFormSection = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +10,8 @@ const ContactFormSection = () => {
     mobile: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -19,10 +20,40 @@ const ContactFormSection = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // TODO: Add form submission logic
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Replace YOUR_FORMSPREE_ID with your actual Formspree form ID
+      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          mobile: '',
+          message: ''
+        });
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -72,7 +103,7 @@ const ContactFormSection = () => {
                 marginTop: '40px'
               }}
             >
-              Get in touch
+              Neem contact op
             </h2>
 
             {/* Contact Details */}
@@ -227,26 +258,23 @@ const ContactFormSection = () => {
                 lineHeight: '100%'
               }}
             >
-              Have a question? Email us.
+              Heb je een vraag? Mail ons.
             </h3>
 
             <form 
               onSubmit={handleSubmit}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '28px'
-              }}
+              className="space-y-7"
             >
               {/* Name */}
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder="Naam"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors disabled:opacity-50"
                 style={{
                   fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
                   fontSize: '16px'
@@ -257,11 +285,12 @@ const ContactFormSection = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder="E-mailadres"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors disabled:opacity-50"
                 style={{
                   fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
                   fontSize: '16px'
@@ -272,11 +301,12 @@ const ContactFormSection = () => {
               <input
                 type="tel"
                 name="mobile"
-                placeholder="Mobile Number"
+                placeholder="Telefoonnummer"
                 value={formData.mobile}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors disabled:opacity-50"
                 style={{
                   fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
                   fontSize: '16px'
@@ -286,30 +316,57 @@ const ContactFormSection = () => {
               {/* Message */}
               <textarea
                 name="message"
-                placeholder="Message"
+                placeholder="Bericht"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors resize-none"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:border-gym-gold transition-colors resize-none disabled:opacity-50"
                 style={{
                   fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
                   fontSize: '16px'
                 }}
               />
 
-              {/* Submit Button - ZONDER type prop */}
-              <button
-                type="submit"
-                className="w-full bg-gym-gold text-gym-navy font-bold py-4 rounded-md hover:bg-gym-gold/90 transition-colors uppercase"
-                style={{
-                  fontFamily: 'Syne',
-                  fontSize: '16px',
-                  letterSpacing: '0.1em'
-                }}
-              >
-                SEND MESSAGE
-              </button>
+              {/* Success Message */}
+              {submitStatus === 'success' && (
+                <div 
+                  className="w-full px-4 py-3 bg-gym-gold/20 border border-gym-gold rounded-md text-gym-gold text-center"
+                  style={{
+                    fontFamily: 'Syne',
+                    fontSize: '14px',
+                    fontWeight: 600
+                  }}
+                >
+                  ✓ Bericht succesvol verzonden! We nemen zo snel mogelijk contact op.
+                </div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === 'error' && (
+                <div 
+                  className="w-full px-4 py-3 bg-red-500/20 border border-red-500 rounded-md text-red-300 text-center"
+                  style={{
+                    fontFamily: 'Syne',
+                    fontSize: '14px',
+                    fontWeight: 600
+                  }}
+                >
+                  ✕ Er ging iets mis. Probeer het opnieuw of bel ons.
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <div className="w-full">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center px-[35px] py-5 rounded-full font-syne font-bold text-xs leading-[14px] tracking-[0.15em] uppercase transition-all duration-300 hover:scale-105 bg-[#E1AC46] text-[#002444] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  {isSubmitting ? 'VERZENDEN...' : 'VERSTUUR BERICHT'}
+                </button>
+              </div>
             </form>
           </div>
 

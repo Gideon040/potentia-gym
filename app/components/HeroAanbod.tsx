@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const HeroAboutUs = () => {
+const HeroAanbod = () => {
   return (
     <section 
       className="relative w-full overflow-hidden"
@@ -19,7 +19,7 @@ const HeroAboutUs = () => {
         }}
       />
 
-      {/* Background Image - Focus iets boven top */}
+      {/* Background Image */}
       <div 
         className="absolute top-0 w-full lg:w-4/5 h-full" 
         style={{ 
@@ -27,12 +27,12 @@ const HeroAboutUs = () => {
         }}
       >
         <Image
-          src="/about-hero-team.png"
-          alt="Potentia Gym Team"
+          src="/gym-background.png"
+          alt="Potentia Gym Services"
           fill
           className="object-cover"
           style={{
-            objectPosition: 'center -20px'  // 20px verder omhoog
+            objectPosition: 'center -20px'
           }}
           priority
         />
@@ -49,9 +49,9 @@ const HeroAboutUs = () => {
       {/* Content Container */}
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-16">
-          <div className="max-w-[440px]">
+          <div className="max-w-[540px]">
             
-            {/* "ABOUT US" Label */}
+            {/* "AANBOD" Label */}
             <p 
               className="text-gym-gold uppercase mb-4"
               style={{
@@ -62,7 +62,7 @@ const HeroAboutUs = () => {
                 letterSpacing: '0.5em'
               }}
             >
-              ABOUT US
+              ONS AANBOD
             </p>
 
             {/* Main Heading */}
@@ -75,7 +75,7 @@ const HeroAboutUs = () => {
                 lineHeight: '100%'
               }}
             >
-              A team of dedicated professionals
+              Kies het pakket dat bij jou past
             </h1>
 
           </div>
@@ -88,4 +88,4 @@ const HeroAboutUs = () => {
   );
 };
 
-export default HeroAboutUs;
+export default HeroAanbod;
