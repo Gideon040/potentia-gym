@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+echo "public/Potentia-Mashup-Draft.mov" >> .gitignore
+echo "*.mov" >> .gitignore
