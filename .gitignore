@@ -43,3 +43,6 @@ next-env.d.ts
 # large video files
 *.mov
 public/Potentia-Mashup-Draft.mov
+# large video files
+*.mov
+public/Potentia-Mashup-Draft.mov
