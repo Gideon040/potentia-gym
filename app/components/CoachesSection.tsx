@@ -11,55 +11,55 @@ const CoachesSection = () => {
       name: 'Bob Demarteau',
       role: 'FOUNDER AND COACH',
       image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Bob is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to his expertise and encouraging demeanor, he is a powerful, knowledgeable, expert, and outdoorsman.'
+      description: 'Bob is een personal trainer en lifestyle coach die bekend staat om zijn unieke en onderbouwde aanpak. Met een achtergrond in de diëtetiek en jaren lange trainingservaring, heeft hij nu honderden mensen geholpen met het verbeteren van hun gezondheid, en een sterk en fit lichaam gecreëerd.'
     },
     {
       name: 'Bram Kuppens',
       role: 'FOUNDER AND COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Bram is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to his expertise and encouraging demeanor, he is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/bram kuppens.png',
+      description: 'Met een grote passie voor training en gezondheid, werkt Bram al jaren voor het verbeteren van de gezondheid van de klanten. Gespecialiseerd in het aanlever van de juiste mindset en het fitter energieker maken van je lichaam.'
     },
     {
       name: 'Frans Vossen',
       role: 'COACH',
       image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Frans is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to his expertise and encouraging demeanor, he is a powerful, knowledgeable, expert, and outdoorsman.'
+      description: 'Een echte no-nonsense coach. Frans helpt je graag met het opbouwen van spiermassa, fitter worden en het aanleren van de juiste mindset. Door de vele studies en cursussen beschrijven zijn klanten hem als krachtig, onderbouwend, expert en meedenkend. '
     },
     {
       name: 'Aurora van Gennip',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Aurora is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to her expertise and encouraging demeanor, she is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/aurora van gennip.png',
+      description: 'Aurora onderscheidt zich met een unieke aanpak in krachttraining voor vrouwen. Met haar deskundigheid in fitness en haar toewijding, biedt Aurora coaching op maat gemaakt om kracht te bevorderen en doelen te behalen.'
     },
     {
       name: 'Nena van Veldhoven',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Nena is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to her expertise and encouraging demeanor, she is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/nena (2).png',
+      description: 'Gecertificeerd diëtist & personal trainster. Gevarieerd van groepslessen tot personal training en begeleiding met voeding. Nena staat bekend om haar motiverende trainingen.'
     },
     {
       name: 'Anita van Ettinger',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Anita is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to her expertise and encouraging demeanor, she is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/anita van ettinger.png',
+      description: 'Kracht, groei, gevoel, eerlijkheid en verbinding. Deze woorden beschrijven Anita op haar best. Met haar jaren lange ervaring in de sport heeft ze haar stempel gedrukt in Cranendonck.'
     },
     {
       name: 'Jordy Ronken',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Jordy is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to his expertise and encouraging demeanor, he is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/jordy.png',
+      description: 'Een enthousiaste boksinstructeur met een passie voor de sport. Jordy begeleidt zowel beginners als gevorderde boksers, waarbij hij de nadruk legt op techniek, conditie en zelfvertrouwen.'
     },
     {
       name: 'Evianne Beeren',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Evianne is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to her expertise and encouraging demeanor, she is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/evianne.png',
+      description: 'Evianne gelooft dat een gezond lichaam de basis vormt voor een gelukkig leven. Haar dynamische workouts zijn ontworpen om niet alleen fysieke kracht op te bouwen, maar ook zelfvertrouwen te vergroten.'
     },
     {
       name: 'Joanie de Laat',
       role: 'COACH',
-      image: '/bob demarteau.png',
-      description: 'A true, no-nonsense coach. Joanie is happy to help you build muscle mass, get fitter, and develop the right mindset. Thanks to her expertise and encouraging demeanor, she is a powerful, knowledgeable, expert, and outdoorsman.'
+      image: '/joanie.png',
+      description: 'Of je nu op zoek bent naar strakkere billen, slankere benen of een sterke core, Joanie begeleid je naar je doel. Met haar positieve energie en motiverende aanpak maakt ze van elke training een uitdaging.'
     }
   ];
 

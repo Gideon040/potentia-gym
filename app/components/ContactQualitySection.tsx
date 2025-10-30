@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import PrimaryButton from '../components/PrimaryButton';
 import OutlineButton from '../components/OutlineButton';
+import Link from 'next/link';
 
 const ContactQualitySection = () => {
   return (
@@ -43,7 +44,7 @@ const ContactQualitySection = () => {
                   lineHeight: '100%'
                 }}
               >
-                Aad de slag
+                Aan de slag
               </h2>
             </div>
 
@@ -68,19 +69,23 @@ const ContactQualitySection = () => {
               </p>
             </div>
 
-            {/* Buttons */}
+{/* Buttons */}
             <div 
               className="flex gap-4 mt-8"
               style={{
                 marginLeft: '9px'
               }}
             >
-              <PrimaryButton variant="solid">
-                MORE INFORMATION
-              </PrimaryButton>
-              <OutlineButton variant="golden-outline">
-                OUR OFFER
-              </OutlineButton>
+              <Link href="/aanbod">
+                <PrimaryButton variant="solid">
+                  MEER INFORMATIE
+                </PrimaryButton>
+              </Link>
+              <Link href="/over-ons">
+                <OutlineButton variant="golden-outline">
+                  ONS TEAM
+                </OutlineButton>
+              </Link>
             </div>
 
           </div>

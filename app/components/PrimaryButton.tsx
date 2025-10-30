@@ -7,6 +7,7 @@ interface PrimaryButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -14,6 +15,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   onClick,
   className = '',
+  disabled = false,
 }) => {
   const baseClasses = "flex items-center justify-center px-[35px] py-5 rounded-full font-syne font-bold text-xs leading-[14px] tracking-[0.15em] uppercase transition-all duration-300 hover:scale-105";
   
@@ -22,10 +24,13 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     gradient: "bg-gradient-to-r from-[#E1AC46] to-[#FFCE71] text-white"
   };
 
+  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed hover:scale-100" : "";
+
   return (
     <button
       onClick={onClick}
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      disabled={disabled}
+      className={`${baseClasses} ${variantClasses[variant]} ${disabledClasses} ${className}`}
     >
       {children}
     </button>

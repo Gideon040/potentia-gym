@@ -9,34 +9,34 @@ const Testimonials = () => {
   const testimonials = [
     {
       category: 'Small Group Training',
-      text: 'The coach is lorem ipsum dolor sit amet. This is fill in text. This will be replaced with proper text shortly.',
-      name: 'Name Here',
-      location: 'Location',
-      image: '/bram kuppens.png',
+      text: 'Tijd terug een perosnal training traject aangegaan, en geen moment spijt gehad! Vanuit een intake mijn doelen besproken, en ze allemaal behaald. Fijne begeleiding, voeding en training op maat en trainers met kwaliteit!',
+      name: 'Raymond',
+      location: 'Maarheeze',
+      image: '/raymond.jpg',
       featured: false
     },
     {
       category: 'Personal Training',
-      text: 'Great help! A team you can rely on. Excellent guidance, a personalized schedule, and top-notch service. I\'m feeling confident again and I\'m thrilled with it. I would recommend it to everyone.',
-      name: 'Name Here',
-      location: 'Location',
-      image: '/bram kuppens.png',
+      text: 'Vanuit een fijn intake gesprek hebben we samen onze doelen besproken. Na lange tijd stil te hebben gestaan bij mijn vorige PT er heb ik eindelijk weer flinke stappen gemaakt. Ik ervaar weer veel zelfvertrouwen en ben klaar voor de volgende stap .',
+      name: 'Spike',
+      location: 'Heeze',
+      image: '/spike.jpg',
       featured: true
     },
     {
       category: 'Crossmax',
-      text: 'Frans is a great friend and coach! He listens attentively to your needs and carefully considers what best suits your goals.',
-      name: 'Romano',
-      location: 'Location',
-      image: '/bram kuppens.png',
+      text: 'Ik ben begonnen bij Potentia voor mijn afvalproces. Ik had een stok achter de deur nodig en iemand die mij in een positieve zin wilde helpen met afvallen. Ik heb met Potentia al veel resultaat kunnen behalen binnen 2 maanden!',
+      name: 'Karin',
+      location: 'Eindhovenon',
+      image: '/karin.png',
       featured: false
     },
     {
-      category: 'Boxing',
-      text: 'The coach is lorem ipsum dolor sit amet. This is fill in text. This will be replaced with proper text shortly.',
-      name: 'Name Here',
-      location: 'Location',
-      image: '/bram kuppens.png',
+      category: 'Crossmax',
+      text: 'In het leven draait veel wat we doen om de juiste mindset. Sinds ik bij Potentia train voel me fitter, energieker en sterker in mijn hoofd en lichaam!',
+      name: 'Steve',
+      location: 'Maarheeze',
+      image: '/steve.jpg',
       featured: false
     }
   ];

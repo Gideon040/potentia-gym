@@ -1,5 +1,4 @@
 import HeroAanbod from '../components/HeroAanbod';
-import AanbodIntro from '../components/AanbodIntro';
 import PakkettenGrid from '../components/PakkettenGrid';
 import GezelligeSportschool from '../components/GezelligeSportschool';
 import Testimonials from '../components/Testimonials';
