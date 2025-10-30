@@ -37,12 +37,14 @@ const IntroVideo = () => {
                 boxShadow: '30px 5px 99px 0px rgba(225, 172, 70, 0.35)',
               }}
             >
-              <Image
-                src="/intro video.png"
-                alt="Intro video"
-                fill
-                className="object-cover rounded-[22px]"
-              />
+              <video
+                controls
+                playsInline
+                className="w-full h-full object-cover rounded-[22px]"
+              >
+                <source src="/Potentia-Mashup-Draft.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
 
             {/* Handwritten Text + Arrow - Desktop Only */}
