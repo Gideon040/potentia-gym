@@ -101,10 +101,10 @@ const ProeflesPopup: React.FC<ProeflesPopupProps> = ({ isOpen, onClose }) => {
 
         {/* Scrollable Content */}
         <div className="overflow-y-auto" style={{ maxHeight: '95vh' }}>
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row lg:min-h-[700px]">
             
             {/* Left Side - Image */}
-            <div className="lg:w-1/2 relative h-[200px] sm:h-[300px] lg:h-[600px]">
+            <div className="lg:w-1/2 relative h-[200px] sm:h-[300px] lg:h-auto">
               <Image
                 src="/1 op 12 group.png"
                 alt="Potentia Gym Training"

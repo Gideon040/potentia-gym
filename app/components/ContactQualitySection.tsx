@@ -8,15 +8,77 @@ import Link from 'next/link';
 
 const ContactQualitySection = () => {
   return (
-    <section 
-      className="relative w-full bg-white"
-      style={{
-        height: '765px'
-      }}
-    >
-      {/* Content Container - ZELFDE ALS ContactFormSection */}
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16 h-full">
-        <div className="relative h-full">
+    <section className="relative w-full bg-white lg:h-[765px]">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-16 h-full">
+        
+        {/* ===== MOBILE LAYOUT ===== */}
+        <div className="block lg:hidden py-12">
+          {/* Image - Top */}
+          <div 
+            className="relative overflow-hidden shadow-xl mb-6 mx-auto"
+            style={{
+              width: '370px',
+              height: '378px',
+              borderRadius: '24px'
+            }}
+          >
+            <Image
+              src="/about-team-large.png"
+              alt="Potentia Team"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Content - Bottom */}
+          <div className="space-y-5 max-w-[370px] mx-auto">
+            
+            {/* Heading */}
+            <h2 
+              className="text-gym-navy"
+              style={{
+                fontFamily: 'Syne',
+                fontWeight: 700,
+                fontSize: '28px',
+                lineHeight: '34px'
+              }}
+            >
+              Aan de slag
+            </h2>
+            
+            {/* Body Text */}
+            <p 
+              className="text-gym-navy/80"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 400,
+                fontSize: '15px',
+                lineHeight: '24px'
+              }}
+            >
+              Wij willen je graag helpen! Om jouw vraag in behandeling te kunnen nemen hebben we enkele gegevens van je nodig.
+            </p>
+
+            {/* Buttons - Full Width */}
+            <div className="space-y-3 pt-2">
+              <Link href="/aanbod" className="block">
+                <PrimaryButton variant="solid" className="w-full">
+                  MEER INFORMATIE
+                </PrimaryButton>
+              </Link>
+              
+              <Link href="/over-ons" className="block">
+                <OutlineButton variant="golden-outline" className="w-full">
+                  ONS TEAM
+                </OutlineButton>
+              </Link>
+            </div>
+            
+          </div>
+        </div>
+
+        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        <div className="relative h-full hidden lg:block">
         
           {/* Content Container - Left Side */}
           <div 
@@ -69,7 +131,7 @@ const ContactQualitySection = () => {
               </p>
             </div>
 
-{/* Buttons */}
+            {/* Buttons */}
             <div 
               className="flex gap-4 mt-8"
               style={{

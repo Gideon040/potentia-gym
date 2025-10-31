@@ -14,7 +14,7 @@ const PakkettenGrid = () => {
       image: '/personal duo.png',
       description: 'Met de personal training bij Potentia in Maarheeze heb jij de stok achter de deur die je nodig hebt om te sporten en te werken aan je gezondheid. Gezonder en fitter dan ooit met de persoonlijke aandacht die jij nodig hebt.',
       features: ['Persoonlijke begeleiding', 'Aangepast trainingsschema', 'Maximale resultaten'],
-      link: '/services/personal-training',
+      link: '/personal-training',
       size: 'large'
     },
     {
@@ -23,7 +23,7 @@ const PakkettenGrid = () => {
       image: '/1 op 12 group.png',
       description: 'Sport je niet graag alleen? En zoek je gelijkgestemden waarmee je kunt werken aan je gezondheid? Dan nodigen we je graag uit voor de small group trainingen bij Potentia.',
       features: ['Motiverende groep', 'Professionele begeleiding', 'Gezellige sfeer'],
-      link: '/services/group-training',
+      link: '/1-op-12-group',
       size: 'medium'
     },
     {
@@ -32,7 +32,7 @@ const PakkettenGrid = () => {
       image: '/1 op 5 group.png',
       description: 'Sport je niet graag alleen? En zoek je gelijkgestemden waarmee je kunt werken aan je gezondheid? Dan nodigen we je graag uit voor de small group trainingen bij Potentia.',
       features: ['Klein groepsverband', 'Persoonlijke aandacht', 'Betaalbaar'],
-      link: '/services/1-op-5-group',
+      link: '/small-group-training',
       size: 'medium'
     },
     {
@@ -41,7 +41,7 @@ const PakkettenGrid = () => {
       image: '/reformer pilates.png',
       description: 'Reformer pilates is de workout die tal van voordelen biedt voor zowel je fysieke als mentale welzijn. Centraal tijdens de lessen staat het bouwen van een sterke core en krachtige buikspieren.',
       features: ['Sterke core', 'Flexibiliteit', 'Blessurepreventie'],
-      link: '/services/reformer-pilates',
+      link: '/reformer-pilates',
       size: 'medium'
     },
     {
@@ -50,44 +50,57 @@ const PakkettenGrid = () => {
       image: '/gym only.png',
       description: 'Fitness 24/7 in de nieuwste sportschool in Maarheeze. Bij Potentia Gym train je met de beste apparaten en is er altijd een trainer voor je om je te helpen. Ervaar het zelf en vraag je gratis proefles aan.',
       features: ['24/7 toegang', 'Moderne apparatuur', 'Altijd hulp beschikbaar'],
-      link: '/services/gym-only',
+      link: '/gym-only',
       size: 'large'
     }
   ];
 
   return (
-    <section className="relative w-full bg-[#001427] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+    <section className="relative w-full bg-[#001427] py-12 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-16">
         
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-8 lg:mb-16">
           <p 
-            className="text-gym-gold uppercase mb-4"
+            className="text-gym-gold uppercase mb-3 lg:mb-4"
             style={{
               fontFamily: 'Syne',
               fontWeight: 400,
-              fontSize: '16px',
+              fontSize: '14px',
               lineHeight: '100%',
-              letterSpacing: '0.5em'
+              letterSpacing: '0.3em'
             }}
           >
             ONZE PAKKETTEN
           </p>
           <h2 
-            className="text-white"
+            className="text-white px-4"
             style={{
               fontFamily: 'Syne',
               fontWeight: 700,
-              fontSize: '41px',
-              lineHeight: '100%'
+              fontSize: '28px',
+              lineHeight: '34px'
             }}
           >
             Bij onze sportschool bieden we diverse trainingsmogelijkheden aan
           </h2>
         </div>
 
-        {/* Pakketten Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+        {/* Mobile Layout - Single Column */}
+        <div className="block lg:hidden space-y-6 mb-8">
+          {pakketten.map((pakket, index) => (
+            <PakketCard 
+              key={index}
+              pakket={pakket} 
+              index={index}
+              hoveredIndex={hoveredIndex}
+              setHoveredIndex={setHoveredIndex}
+            />
+          ))}
+        </div>
+
+        {/* Desktop Layout - Grid */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-6 mb-12">
           
           {/* First Row - 2 Cards */}
           <div className="lg:col-span-7">
@@ -121,14 +134,14 @@ const PakkettenGrid = () => {
         </div>
 
         {/* Bottom Info Section */}
-        <div className="max-w-[800px] mx-auto text-center mt-16">
+        <div className="max-w-[800px] mx-auto text-center mt-12 lg:mt-16 px-4">
           <p 
             className="text-white/90 mb-8"
             style={{
-              fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
+              fontFamily: 'Inter',
               fontWeight: 400,
-              fontSize: '18px',
-              lineHeight: '35px'
+              fontSize: '15px',
+              lineHeight: '24px'
             }}
           >
             Kies de training die bij jou past en bereik jouw fitnessdoelen! 
@@ -168,7 +181,7 @@ const PakketCard: React.FC<PakketCardProps> = ({
   return (
     <Link 
       href={pakket.link}
-      className="relative block overflow-hidden rounded-[25px] group cursor-pointer h-[469px]"
+      className="relative block overflow-hidden rounded-[25px] group cursor-pointer h-[400px] lg:h-[469px]"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >
@@ -193,7 +206,7 @@ const PakketCard: React.FC<PakketCardProps> = ({
       />
 
       {/* Arrow Icon - Top Right */}
-      <div className="absolute top-6 right-6 w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity z-20">
+      <div className="absolute top-4 right-4 lg:top-6 lg:right-6 w-6 h-6 lg:w-8 lg:h-8 opacity-80 group-hover:opacity-100 transition-opacity z-20">
         <Image
           src="/arrow-right-up.png"
           alt=""
@@ -203,14 +216,14 @@ const PakketCard: React.FC<PakketCardProps> = ({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-end p-8">
+      <div className="relative z-10 h-full flex flex-col justify-end p-6 lg:p-8">
         
         {/* Title */}
         <h3 
           className="text-white font-bold leading-tight whitespace-pre-line mb-3 transition-all duration-500"
           style={{ 
             fontFamily: 'Syne',
-            fontSize: isHovered ? '26px' : '24px'
+            fontSize: isHovered ? '26px' : '22px'
           }}
         >
           {pakket.shortTitle}
@@ -227,10 +240,10 @@ const PakketCard: React.FC<PakketCardProps> = ({
           <p 
             className="text-[#D2D2D2] mb-4"
             style={{
-              fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
+              fontFamily: 'Inter',
               fontWeight: 400,
-              fontSize: '14px',
-              lineHeight: '21px'
+              fontSize: '13px',
+              lineHeight: '20px'
             }}
           >
             {pakket.description}
@@ -243,8 +256,8 @@ const PakketCard: React.FC<PakketCardProps> = ({
                 key={idx}
                 className="flex items-center gap-2 text-gym-gold"
                 style={{
-                  fontFamily: 'Aeonik TRIAL, Inter, sans-serif',
-                  fontSize: '13px'
+                  fontFamily: 'Inter',
+                  fontSize: '12px'
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-gym-gold"></span>
@@ -258,7 +271,7 @@ const PakketCard: React.FC<PakketCardProps> = ({
             className="text-gym-gold mt-4 flex items-center gap-2 font-bold"
             style={{
               fontFamily: 'Syne',
-              fontSize: '14px',
+              fontSize: '13px',
               letterSpacing: '0.1em'
             }}
           >

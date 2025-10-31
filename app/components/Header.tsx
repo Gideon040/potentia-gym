@@ -10,12 +10,12 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [popupOpen, setPopupOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [mobileAanbodOpen, setMobileAanbodOpen] = useState(false);
 
   const navItems = [
     { label: 'Lesrooster', href: '/lesrooster' },
     { label: 'Aanbod', href: '/aanbod', hasMegaMenu: true },
     { label: 'Over ons', href: '/over-ons' },
-    { label: 'Dagpas', href: '/dagpas' },
     { label: 'Contact us', href: '/contact' }
   ];
 
@@ -58,23 +58,52 @@ const Header = () => {
             }}
           >
             <nav 
-              className="flex items-center justify-between px-6 lg:px-12"
+              className="flex items-center justify-between gap-3 px-4 lg:px-12"
               style={{
-                height: '85px'
+                height: '70px'
               }}
             >
               
-              {/* Logo */}
-              <Link href="/" className="flex items-center">
+              {/* Hamburger Menu - Left (Mobile Only) */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden text-white flex-shrink-0"
+                aria-label="Toggle menu"
+              >
+                <Image 
+                  src="/hamburger.svg" 
+                  width={34} 
+                  height={26} 
+                  alt="Menu"
+                  style={{ width: '34px', height: '26px' }}
+                />
+              </button>
+
+              {/* Logo - Center on Mobile, Left on Desktop */}
+              <Link href="/" className="flex items-center lg:flex-shrink-0">
                 <Image 
                   src="/potentia logo wit.png" 
                   alt="Potentia" 
                   width={158} 
                   height={33}
-                  className="w-auto"
-                  style={{ height: '33px' }}
+                  className="w-auto h-[28px] lg:h-[33px]"
+                  priority
                 />
               </Link>
+
+              {/* Mobile CTA Button - Styled like desktop but smaller */}
+              <button
+                onClick={() => setPopupOpen(true)}
+                className="lg:hidden flex-shrink-0 px-4 py-2 rounded-[45px] border-2 border-gym-gold text-gym-gold uppercase font-bold whitespace-nowrap hover:bg-gym-gold hover:text-[#001427] transition-all duration-300"
+                style={{
+                  fontFamily: 'Syne',
+                  fontSize: '9px',
+                  letterSpacing: '0.12em',
+                  height: '36px'
+                }}
+              >
+                FREE TRIAL LESSON
+              </button>
 
               {/* Desktop Navigation */}
               <div className="hidden lg:flex items-center gap-8">
@@ -121,28 +150,6 @@ const Header = () => {
                 </GradientButton>
               </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden text-white p-2"
-                aria-label="Toggle menu"
-              >
-                <svg 
-                  className="w-6 h-6" 
-                  fill="none" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth="2" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  {mobileMenuOpen ? (
-                    <path d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
             </nav>
 
             {/* Mobile Menu */}
@@ -150,31 +157,74 @@ const Header = () => {
               <div className="lg:hidden py-6 px-6 border-t border-gym-navy-light">
                 <div className="flex flex-col space-y-4">
                   {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="text-white uppercase hover:text-gym-gold transition-colors py-2"
-                      style={{ 
-                        fontFamily: 'Syne',
-                        fontWeight: 700,
-                        fontSize: '12px',
-                        letterSpacing: '0.15em'
-                      }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={item.href}>
+                      {/* Menu Item */}
+                      {item.hasMegaMenu ? (
+                        <button
+                          onClick={() => setMobileAanbodOpen(!mobileAanbodOpen)}
+                          className="text-white uppercase hover:text-gym-gold transition-colors py-2 flex items-center justify-between w-full"
+                          style={{ 
+                            fontFamily: 'Syne',
+                            fontWeight: 700,
+                            fontSize: '12px',
+                            letterSpacing: '0.15em'
+                          }}
+                        >
+                          {item.label}
+                          <svg 
+                            className={`w-4 h-4 transition-transform duration-300 ${mobileAanbodOpen ? 'rotate-180' : ''}`}
+                            fill="none" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth="2" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                          >
+                            <path d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="text-white uppercase hover:text-gym-gold transition-colors py-2 block"
+                          style={{ 
+                            fontFamily: 'Syne',
+                            fontWeight: 700,
+                            fontSize: '12px',
+                            letterSpacing: '0.15em'
+                          }}
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+
+                      {/* Aanbod Submenu */}
+                      {item.hasMegaMenu && mobileAanbodOpen && (
+                        <div className="mt-3 ml-4 space-y-3 pb-2">
+                          {aanbodItems.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block text-gym-gold hover:text-white transition-colors py-2"
+                              style={{ 
+                                fontFamily: 'Syne',
+                                fontWeight: 600,
+                                fontSize: '11px',
+                                letterSpacing: '0.1em'
+                              }}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                                setMobileAanbodOpen(false);
+                              }}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
-                  
-                  {/* Mobile CTA Button */}
-                  <div className="pt-4">
-                    <GradientButton onClick={() => {
-                      setPopupOpen(true);
-                      setMobileMenuOpen(false);
-                    }}>
-                      Gratis Proefles
-                    </GradientButton>
-                  </div>
                 </div>
               </div>
             )}

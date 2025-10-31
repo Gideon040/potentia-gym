@@ -8,30 +8,74 @@ const FoundedSection = () => {
       icon: '/grafiek.png',
       title: 'Proven Guidance',
       description: 'Our methods have been proven time and again, resulting in over 300 successful transformations.',
-      topOffset: '0px'  // Laagste (links)
+      topOffset: '0px'
     },
     {
       image: '/middle-image-about-us.png',
       icon: '/hoofd.png',
       title: 'Training with Pleasure',
       description: 'Different and varied lessons every week, with energetic trainers, we ensure real results.',
-      topOffset: '-100px'  // Midden
+      topOffset: '-100px'
     },
     {
       image: '/right-image-about-us.png',
       icon: '/dumbells.png',
       title: 'Personal Attention',
       description: 'You train in a small group, so we really pay attention to you. There\'s always time for a chat.',
-      topOffset: '-200px'  // Hoogste (rechts)
+      topOffset: '-200px'
     }
   ];
 
   return (
-    <section className="relative w-full bg-[#001427] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+    <section className="relative w-full bg-[#001427] py-12 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-16">
         
-        {/* Text Content - Driehoek vorm */}
-        <div className="mb-10 lg:mb-14">
+        {/* ===== MOBILE TEXT ===== */}
+        <div className="block lg:hidden mb-8">
+          
+          {/* "OVER ONS" Label */}
+          <p 
+            className="text-gym-gold uppercase mb-4"
+            style={{
+              fontFamily: 'Syne',
+              fontWeight: 400,
+              fontSize: '13px',
+              lineHeight: '100%',
+              letterSpacing: '0.5em'
+            }}
+          >
+            Over ons
+          </p>
+
+          {/* Main Heading */}
+          <h2 
+            className="text-white mb-5"
+            style={{
+              fontFamily: 'Syne',
+              fontWeight: 700,
+              fontSize: '28px',
+              lineHeight: '34px'
+            }}
+          >
+            Founded out of love of sports
+          </h2>
+
+          {/* Body Text - Full Width op mobile */}
+          <p 
+            className="text-white"
+            style={{
+              fontFamily: 'Inter',
+              fontWeight: 400,
+              fontSize: '15px',
+              lineHeight: '24px'
+            }}
+          >
+            Two young guys with one goal in mind: to offer the highest quality of every service we offer. Why? Because for every unique goal, there should be a unique trainer available. Not one-size-fits-all, but truly personalized. We don't want to create a crowded "gym," but a second home for your health.
+          </p>
+        </div>
+
+        {/* ===== DESKTOP TEXT: DRIEHOEK EFFECT ===== */}
+        <div className="hidden lg:block mb-14">
           
           {/* "OVER ONS" Label */}
           <p 
@@ -96,9 +140,83 @@ const FoundedSection = () => {
           </div>
         </div>
 
-        {/* 3 Cards - Met trap effect */}
-        <div className="flex flex-col sm:flex-row lg:flex-row gap-5 lg:gap-6 items-start">
+        {/* ===== MOBILE CARDS ===== */}
+        <div className="block lg:hidden space-y-6">
+          {cards.map((card, index) => (
+            <div 
+              key={index}
+              className="relative overflow-hidden rounded-[24px] mx-auto"
+              style={{
+                width: '370px',
+                height: '450px'
+              }}
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                />
+                
+                {/* Gradient Overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(0.12deg, rgba(0, 20, 39, 0.85) 8.82%, rgba(0, 20, 39, 0) 56.98%)'
+                  }}
+                />
+              </div>
 
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                
+                {/* Icon with white circle background */}
+                <div 
+                  className="w-[50px] h-[50px] rounded-full bg-white flex items-center justify-center mb-3"
+                >
+                  <Image
+                    src={card.icon}
+                    alt=""
+                    width={25}
+                    height={25}
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 
+                  className="text-white uppercase mb-2"
+                  style={{
+                    fontFamily: 'Syne',
+                    fontWeight: 400,
+                    fontSize: '20px',
+                    lineHeight: '28px'
+                  }}
+                >
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p 
+                  className="text-[#D2D2D2]"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 400,
+                    fontSize: '13px',
+                    lineHeight: '20px'
+                  }}
+                >
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ===== DESKTOP CARDS: MET TRAP EFFECT ===== */}
+        <div className="hidden lg:flex gap-6 items-start">
           {cards.map((card, index) => (
             <div 
               key={index}

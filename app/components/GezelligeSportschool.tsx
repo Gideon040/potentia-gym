@@ -8,14 +8,92 @@ import OutlineButton from './OutlineButton';
 const GezelligeSportschool = () => {
   return (
     <section 
-      className="relative w-full bg-white"
-      style={{
-        height: '765px'
-      }}
+      className="relative w-full bg-white lg:h-[765px]"
     >
-      {/* Content Container */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16 h-full">
-        <div className="relative h-full">
+        
+        {/* ===== MOBILE LAYOUT ===== */}
+        <div className="block lg:hidden py-12">
+          
+          {/* Image */}
+          <div 
+            className="relative overflow-hidden shadow-xl mb-6 mx-auto"
+            style={{
+              width: '370px',
+              height: '378px',
+              borderRadius: '24px'
+            }}
+          >
+            <Image
+              src="/about-team-large.png"
+              alt="Potentia Team"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="space-y-5 max-w-[370px] mx-auto">
+            
+            {/* Heading with Arrow */}
+            <div className="flex items-center gap-3">
+              <h2 
+                className="text-gym-navy"
+                style={{
+                  fontFamily: 'Syne',
+                  fontWeight: 700,
+                  fontSize: '28px',
+                  lineHeight: '34px'
+                }}
+              >
+                Niet je standaard sportschool
+              </h2>
+              <Image 
+                src="/wobbly-arrow.svg" 
+                width={32} 
+                height={32} 
+                alt="" 
+                className="flex-shrink-0"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(67%) sepia(52%) saturate(463%) hue-rotate(359deg) brightness(95%) contrast(90%)'
+                }}
+              />
+            </div>
+            
+            {/* Body Text */}
+            <p 
+              className="text-gym-navy/80"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 400,
+                fontSize: '15px',
+                lineHeight: '24px'
+              }}
+            >
+              Maar wel de gezelligste en leukste in Cranendonck. We willen geen drukke 
+              sportschool meer, maar een plek waar je als tweede 'thuis' kan werken aan je gezondheid.
+            </p>
+
+            {/* Buttons - Standard components met full width */}
+            <div className="space-y-3 pt-2">
+              <div className="w-full">
+                <PrimaryButton variant="solid" className="w-full">
+                  GRATIS PROEFLES
+                </PrimaryButton>
+              </div>
+              
+              <div className="w-full">
+                <OutlineButton variant="golden-outline" className="w-full">
+                  NEEM CONTACT OP
+                </OutlineButton>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        <div className="relative h-full hidden lg:block">
         
           {/* Content Container - Left Side */}
           <div 

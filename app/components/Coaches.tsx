@@ -7,27 +7,68 @@ import Link from 'next/link';
 const Coaches = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const coaches = [
     {
       name: 'Bob Demarteau',
-      role: 'Founder and Coach',
+      role: 'Oprichter & Coach',
       image: '/bob demarteau.png',
-      description: 'Bob is a personal trainer and lifestyle coach known for his unique and well-founded approach. With a background in nutrition and years of training experience, he has helped hundreds of people improve their health and create strong, fit bodies. His clients describe him as professional, dedicated, knowledgeable, and goal-oriented.'
+      description: 'Bob is een personal trainer en lifestyle coach die bekend staat om zijn unieke en onderbouwde aanpak. Met een achtergrond in de diëtetiek en jaren lange trainingservaring, heeft hij nu honderden mensen geholpen met het verbeteren van hun gezondheid, en een sterk en fit lichaam gecreëerd.'
     },
     {
       name: 'Bram Kuppens',
-      role: 'Founder and Coach',
+      role: 'Oprichter & Coach',
       image: '/bram kuppens.png',
-      description: 'Bram is een gepassioneerde coach die zich inzet om cliënten te helpen hun fitnessdoelen te bereiken door middel van gepersonaliseerde trainingsprogramma\'s en voedingsadvies. Met jarenlange ervaring in de fitnessindustrie begrijpt hij de unieke uitdagingen waarmee zijn cliënten worden geconfronteerd.'
+      description: 'Met een grote passie voor training en gezondheid, werkt Bram al jaren voor het verbeteren van de gezondheid van de klanten. Gespecialiseerd in het aanlever van de juiste mindset en het fitter energieker maken van je lichaam.'
     },
     {
       name: 'Frans Vossen',
       role: 'Coach',
-      image: '/bram kuppens.png',
-      description: 'Frans brengt jarenlange coaching ervaring mee en een toewijding om cliënten te helpen hun volledige potentieel te bereiken door gestructureerde trainingsmethoden. Hij gelooft sterk in een holistische benadering van fitness en welzijn.'
+      image: '/frans vossen.jpg',
+      description: 'Een echte no-nonsense coach. Frans helpt je graag met het opbouwen van spiermassa, fitter worden en het aanleren van de juiste mindset. Door de vele studies en cursussen beschrijven zijn klanten hem als krachtig, onderbouwend, expert en meedenkend.'
+    },
+    {
+      name: 'Aurora van Gennip',
+      role: 'Coach',
+      image: '/aurora van gennip.png',
+      description: 'Aurora onderscheidt zich met een unieke aanpak in krachttraining voor vrouwen. Met haar deskundigheid in fitness en haar toewijding, biedt Aurora coaching op maat gemaakt om kracht te bevorderen en doelen te behalen.'
+    },
+    {
+      name: 'Nena van Veldhoven',
+      role: 'Coach',
+      image: '/nena (2).png',
+      description: 'Gecertificeerd diëtist & personal trainster. Gevarieerd van groepslessen tot personal training en begeleiding met voeding. Nena staat bekend om haar motiverende trainingen.'
+    },
+    {
+      name: 'Anita van Ettinger',
+      role: 'Coach',
+      image: '/anita van ettinger.png',
+      description: 'Kracht, groei, gevoel, eerlijkheid en verbinding. Deze woorden beschrijven Anita op haar best. Met haar jaren lange ervaring in de sport heeft ze haar stempel gedrukt in Cranendonck.'
+    },
+    {
+      name: 'Jordy Ronken',
+      role: 'Coach',
+      image: '/jordy.png',
+      description: 'Een enthousiaste boksinstructeur met een passie voor de sport. Jordy begeleidt zowel beginners als gevorderde boksers, waarbij hij de nadruk legt op techniek, conditie en zelfvertrouwen.'
+    },
+    {
+      name: 'Evianne Beeren',
+      role: 'Coach',
+      image: '/evianne.png',
+      description: 'Evianne gelooft dat een gezond lichaam de basis vormt voor een gelukkig leven. Haar dynamische workouts zijn ontworpen om niet alleen fysieke kracht op te bouwen, maar ook zelfvertrouwen te vergroten.'
+    },
+    {
+      name: 'Joanie de Laat',
+      role: 'Coach',
+      image: '/joanie.png',
+      description: 'Of je nu op zoek bent naar strakkere billen, slankere benen of een sterke core, Joanie begeleid je naar je doel. Met haar positieve energie en motiverende aanpak maakt ze van elke training een uitdaging.'
     }
   ];
+
+  // Minimum swipe distance
+  const minSwipeDistance = 50;
 
   const handleNext = () => {
     if (isTransitioning) return;
@@ -41,6 +82,32 @@ const Coaches = () => {
     setIsTransitioning(true);
     setActiveIndex((prev) => (prev === 0 ? coaches.length - 1 : prev - 1));
     setTimeout(() => setIsTransitioning(false), 900);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    }
+    
+    if (isRightSwipe) {
+      handlePrev();
+    }
   };
 
   // Get 3 visible coaches (desktop only)
@@ -67,7 +134,7 @@ const Coaches = () => {
                 lineHeight: '100%'
               }}
             >
-              Our Coaches
+              Onze Coaches
             </h2>
             <Image 
               src="/wobbly-arrow.svg" 
@@ -85,7 +152,7 @@ const Coaches = () => {
               fontFamily: 'Syne'
             }}
           >
-            View all coaches
+            Bekijk coaches
           </Link>
         </div>
       </div>
@@ -204,7 +271,12 @@ const Coaches = () => {
 
       {/* Mobile: Single card with swipe */}
       <div className="lg:hidden relative">
-        <div className="px-6">
+        <div 
+          className="px-6"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
 
           {/* Single Card */}
           <div 

@@ -52,12 +52,25 @@ const Coaches1op12 = () => {
   ];
 
   return (
-    <section className="relative w-full bg-white py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+    <section className="relative w-full bg-white py-12 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-16">
         
-        {/* Heading */}
+        {/* Heading - MOBILE */}
         <h2 
-          className="text-gym-navy text-center mb-12 lg:mb-16"
+          className="block lg:hidden text-gym-navy text-center mb-8 px-4"
+          style={{
+            fontFamily: 'Syne',
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '34px'
+          }}
+        >
+          Onze Groepsles Coaches
+        </h2>
+
+        {/* Heading - DESKTOP */}
+        <h2 
+          className="hidden lg:block text-gym-navy text-center mb-16"
           style={{
             fontFamily: 'Syne',
             fontWeight: 700,
@@ -68,8 +81,84 @@ const Coaches1op12 = () => {
           Onze Groepsles Coaches
         </h2>
 
-        {/* Coaches Grid */}
-        <div className="flex flex-col sm:flex-row lg:flex-row flex-wrap gap-5 lg:gap-6 items-start justify-center">
+        {/* ===== MOBILE LAYOUT ===== */}
+        <div className="block lg:hidden space-y-6">
+          {coaches.map((coach, index) => (
+            <div
+              key={index}
+              className="relative overflow-hidden rounded-[24px] mx-auto"
+              style={{
+                width: '370px',
+                height: '450px'
+              }}
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={coach.image}
+                  alt={coach.name}
+                  fill
+                  className="object-cover"
+                />
+                
+                {/* Gradient Overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(0.12deg, rgba(0, 20, 39, 0.9) 0%, rgba(0, 20, 39, 0.3) 60%)'
+                  }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                
+                {/* Name */}
+                <h3 
+                  className="text-white uppercase mb-2"
+                  style={{
+                    fontFamily: 'Syne',
+                    fontWeight: 700,
+                    fontSize: '22px',
+                    lineHeight: '28px'
+                  }}
+                >
+                  {coach.name}
+                </h3>
+
+                {/* Specialisatie */}
+                <p 
+                  className="text-gym-gold uppercase mb-3"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 400,
+                    fontSize: '11px',
+                    lineHeight: '18px',
+                    letterSpacing: '0.15em'
+                  }}
+                >
+                  {coach.specialisatie}
+                </p>
+
+                {/* Description - Always visible on mobile */}
+                <p 
+                  className="text-[#D2D2D2]"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 400,
+                    fontSize: '13px',
+                    lineHeight: '20px'
+                  }}
+                >
+                  {coach.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        <div className="hidden lg:flex flex-wrap gap-6 items-start justify-center">
           {coaches.map((coach, index) => (
             <div
               key={index}
