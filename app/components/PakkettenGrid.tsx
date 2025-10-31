@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 const PakkettenGrid = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
 
   const pakketten = [
     {
@@ -95,6 +96,8 @@ const PakkettenGrid = () => {
               index={index}
               hoveredIndex={hoveredIndex}
               setHoveredIndex={setHoveredIndex}
+              touchedIndex={touchedIndex}
+              setTouchedIndex={setTouchedIndex}
             />
           ))}
         </div>
@@ -109,6 +112,8 @@ const PakkettenGrid = () => {
               index={0}
               hoveredIndex={hoveredIndex}
               setHoveredIndex={setHoveredIndex}
+              touchedIndex={touchedIndex}
+              setTouchedIndex={setTouchedIndex}
             />
           </div>
           <div className="lg:col-span-5">
@@ -117,6 +122,8 @@ const PakkettenGrid = () => {
               index={1}
               hoveredIndex={hoveredIndex}
               setHoveredIndex={setHoveredIndex}
+              touchedIndex={touchedIndex}
+              setTouchedIndex={setTouchedIndex}
             />
           </div>
 
@@ -128,6 +135,8 @@ const PakkettenGrid = () => {
                 index={index + 2}
                 hoveredIndex={hoveredIndex}
                 setHoveredIndex={setHoveredIndex}
+                touchedIndex={touchedIndex}
+                setTouchedIndex={setTouchedIndex}
               />
             </div>
           ))}
@@ -168,15 +177,37 @@ interface PakketCardProps {
   index: number;
   hoveredIndex: number | null;
   setHoveredIndex: (index: number | null) => void;
+  touchedIndex: number | null;
+  setTouchedIndex: (index: number | null) => void;
 }
 
 const PakketCard: React.FC<PakketCardProps> = ({ 
   pakket, 
   index, 
   hoveredIndex, 
-  setHoveredIndex 
+  setHoveredIndex,
+  touchedIndex,
+  setTouchedIndex
 }) => {
   const isHovered = hoveredIndex === index;
+  const isTouched = touchedIndex === index;
+  const isActive = isHovered || isTouched;
+
+  const handleTouch = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setTouchedIndex(isTouched ? null : index);
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    // Op mobiel: eerste klik toont info, tweede klik gaat naar link
+    if (window.innerWidth < 1024) {
+      if (!isTouched) {
+        e.preventDefault();
+        setTouchedIndex(index);
+      }
+      // Als al touched, laat de link gewoon werken
+    }
+  };
 
   return (
     <Link 
@@ -184,6 +215,8 @@ const PakketCard: React.FC<PakketCardProps> = ({
       className="relative block overflow-hidden rounded-[25px] group cursor-pointer h-[400px] lg:h-[469px]"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
+      onTouchStart={handleTouch}
+      onClick={handleClick}
     >
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -199,7 +232,7 @@ const PakketCard: React.FC<PakketCardProps> = ({
       <div 
         className="absolute inset-0 transition-opacity duration-500"
         style={{
-          background: isHovered 
+          background: isActive 
             ? 'linear-gradient(0.12deg, rgba(0, 20, 39, 0.95) 0%, rgba(0, 20, 39, 0.3) 70%)' 
             : 'linear-gradient(0.12deg, rgba(0, 20, 39, 0.85) 8.82%, rgba(0, 20, 39, 0) 56.98%)'
         }}
@@ -223,18 +256,18 @@ const PakketCard: React.FC<PakketCardProps> = ({
           className="text-white font-bold leading-tight whitespace-pre-line mb-3 transition-all duration-500"
           style={{ 
             fontFamily: 'Syne',
-            fontSize: isHovered ? '26px' : '22px'
+            fontSize: isActive ? '26px' : '22px'
           }}
         >
           {pakket.shortTitle}
         </h3>
 
-        {/* Description - Appears on hover (desktop) or always visible (mobile) */}
+        {/* Description - Shows on hover (desktop) or touch (mobile) */}
         <div 
           className={`overflow-hidden transition-all duration-500 ${
-            isHovered 
+            isActive 
               ? 'max-h-60 opacity-100 translate-y-0' 
-              : 'lg:max-h-0 lg:opacity-0 lg:translate-y-4 max-h-60 opacity-100 translate-y-0'
+              : 'max-h-0 opacity-0 translate-y-4'
           }`}
         >
           <p 
