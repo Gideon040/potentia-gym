@@ -19,11 +19,13 @@ const GymOnlyIntro = () => {
           <div className="block lg:hidden">
             {/* Image - Top */}
             <div 
-              className="relative overflow-hidden shadow-xl mb-6 mx-auto"
+              className="relative overflow-hidden shadow-xl mb-6"
               style={{
-                width: '370px',
+                width: '100%',
+                maxWidth: '370px',
                 height: '378px',
-                borderRadius: '24px'
+                borderRadius: '24px',
+                margin: '0 auto'
               }}
             >
               <Image
@@ -35,7 +37,7 @@ const GymOnlyIntro = () => {
             </div>
 
             {/* Content - Bottom */}
-            <div className="space-y-5 max-w-[370px] mx-auto">
+            <div className="space-y-5 w-full max-w-[370px] mx-auto">
               
               {/* Heading */}
               <h2 
@@ -189,25 +191,25 @@ const GymOnlyIntro = () => {
                   />
                 </div>
 
-                {/* Small Image 2 - Bottom Left */}
-                <div 
-                  className="absolute"
-                  style={{
-                    width: '229px',
-                    height: '276px',
-                    top: '294px',
-                    left: '0px',
-                    borderRadius: '24px',
-                    overflow: 'hidden'
-                  }}
-                >
-                  <Image
-                    src="/1 op 12 group.png"
-                    alt="Training Equipment"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+{/* Small Image 2 - Bottom Left */}
+<div 
+  className="absolute"
+  style={{
+    width: '229px',
+    height: '276px',
+    top: '294px',
+    left: '0px',
+    borderRadius: '24px',
+    overflow: 'hidden'
+  }}
+>
+  <Image
+    src="/1 op 12 group.png"
+    alt="Training Equipment"
+    fill
+    className="object-cover"
+  />
+</div>
               </div>
             </div>
 
