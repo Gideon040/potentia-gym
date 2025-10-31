@@ -74,7 +74,7 @@ const PakkettenGrid = () => {
             ONZE PAKKETTEN
           </p>
           <h2 
-            className="text-white px-4"
+            className="text-white"
             style={{
               fontFamily: 'Syne',
               fontWeight: 700,
@@ -134,7 +134,7 @@ const PakkettenGrid = () => {
         </div>
 
         {/* Bottom Info Section */}
-        <div className="max-w-[800px] mx-auto text-center mt-12 lg:mt-16 px-4">
+        <div className="max-w-[800px] mx-auto text-center mt-12 lg:mt-16">
           <p 
             className="text-white/90 mb-8"
             style={{
@@ -229,12 +229,12 @@ const PakketCard: React.FC<PakketCardProps> = ({
           {pakket.shortTitle}
         </h3>
 
-        {/* Description - Appears on hover */}
+        {/* Description - Appears on hover (desktop) or always visible (mobile) */}
         <div 
           className={`overflow-hidden transition-all duration-500 ${
             isHovered 
               ? 'max-h-60 opacity-100 translate-y-0' 
-              : 'max-h-0 opacity-0 translate-y-4'
+              : 'lg:max-h-0 lg:opacity-0 lg:translate-y-4 max-h-60 opacity-100 translate-y-0'
           }`}
         >
           <p 

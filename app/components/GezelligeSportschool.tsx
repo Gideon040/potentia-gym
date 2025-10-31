@@ -16,24 +16,27 @@ const GezelligeSportschool = () => {
         <div className="block lg:hidden py-12">
           
           {/* Image */}
-          <div 
-            className="relative overflow-hidden shadow-xl mb-6 mx-auto"
-            style={{
-              width: '370px',
-              height: '378px',
-              borderRadius: '24px'
-            }}
-          >
-            <Image
-              src="/about-team-large.png"
-              alt="Potentia Team"
-              fill
-              className="object-cover"
-            />
+          <div className="w-full mb-6">
+            <div 
+              className="relative overflow-hidden shadow-xl mx-auto"
+              style={{
+                width: 'calc(100vw - 48px)',
+                maxWidth: '350px',
+                height: '378px',
+                borderRadius: '24px'
+              }}
+            >
+              <Image
+                src="/about-team-large.png"
+                alt="Potentia Team"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
           {/* Content */}
-          <div className="space-y-5 max-w-[370px] mx-auto">
+          <div className="space-y-5">
             
             {/* Heading with Arrow */}
             <div className="flex items-center gap-3">
@@ -74,25 +77,37 @@ const GezelligeSportschool = () => {
               sportschool meer, maar een plek waar je als tweede 'thuis' kan werken aan je gezondheid.
             </p>
 
-            {/* Buttons - Standard components met full width */}
+            {/* Buttons - Full width inline buttons */}
             <div className="space-y-3 pt-2">
-              <div className="w-full">
-                <PrimaryButton variant="solid" className="w-full">
-                  GRATIS PROEFLES
-                </PrimaryButton>
-              </div>
+              <button 
+                className="w-full bg-[#E1AC46] text-[#002444] rounded-[45px] font-bold uppercase transition-all duration-300 hover:bg-[#FFCE71] active:scale-95"
+                style={{
+                  height: '46px',
+                  fontFamily: 'Syne',
+                  fontSize: '11px',
+                  letterSpacing: '0.15em'
+                }}
+              >
+                GRATIS PROEFLES
+              </button>
               
-              <div className="w-full">
-                <OutlineButton variant="golden-outline" className="w-full">
-                  NEEM CONTACT OP
-                </OutlineButton>
-              </div>
+              <button 
+                className="w-full border-2 border-[#E1AC46] text-[#002444] rounded-[45px] font-bold uppercase transition-all duration-300 hover:bg-[#E1AC46]/10 active:scale-95"
+                style={{
+                  height: '46px',
+                  fontFamily: 'Syne',
+                  fontSize: '11px',
+                  letterSpacing: '0.15em'
+                }}
+              >
+                NEEM CONTACT OP
+              </button>
             </div>
             
           </div>
         </div>
 
-        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        {/* ===== DESKTOP LAYOUT ===== */}
         <div className="relative h-full hidden lg:block">
         
           {/* Content Container - Left Side */}
