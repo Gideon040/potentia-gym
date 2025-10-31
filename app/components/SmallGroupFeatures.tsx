@@ -34,7 +34,8 @@ const SmallGroupFeatures = () => {
               key={index}
               className="relative overflow-hidden rounded-[24px] mx-auto"
               style={{
-                width: '370px',
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
                 height: '450px'
               }}
             >
@@ -102,7 +103,7 @@ const SmallGroupFeatures = () => {
           ))}
         </div>
 
-        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        {/* ===== DESKTOP LAYOUT ===== */}
         <div className="hidden lg:flex gap-6 items-start justify-center">
           {features.map((feature, index) => (
             <div 

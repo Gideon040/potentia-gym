@@ -51,7 +51,7 @@ const SmallGroupCoaches = () => {
         
         {/* Heading */}
         <h2 
-          className="text-white text-center mb-8 lg:mb-16 px-4"
+          className="text-white text-center mb-8 lg:mb-16"
           style={{
             fontFamily: 'Syne',
             fontWeight: 700,
@@ -69,7 +69,8 @@ const SmallGroupCoaches = () => {
               key={index}
               className="relative overflow-hidden rounded-[24px] mx-auto"
               style={{
-                width: '370px',
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
                 height: '450px'
               }}
             >
