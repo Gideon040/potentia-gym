@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const testimonials = [
     {
@@ -41,12 +43,32 @@ const Testimonials = () => {
     }
   ];
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }
+    
+    if (isRightSwipe) {
+      setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    }
   };
 
   return (
@@ -55,31 +77,20 @@ const Testimonials = () => {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16 mb-12">
         <div className="max-w-[687px] mx-auto text-center">
           <h2 className="text-[#1A2E47]">
-            Curious to know more?<br />
-            Read what our members say.
+            Meer weten?<br />
+            Lees wat onze leden zeggen.
           </h2>
         </div>
       </div>
 
       {/* Testimonials - Desktop: all visible, Mobile: swipable */}
       <div className="relative">
-        {/* Mobile Navigation Arrows */}
-        <div className="lg:hidden flex justify-center gap-3 mb-6">
-          <button
-            onClick={handlePrev}
-            className="flex items-center justify-center w-[40px] h-[37px] rounded border-2 border-black bg-gym-gold/35 transition-all hover:scale-110"
-          >
-            <span className="text-xl">←</span>
-          </button>
-          <button
-            onClick={handleNext}
-            className="flex items-center justify-center w-[40px] h-[37px] rounded border-2 border-black bg-gym-gold transition-all hover:scale-110"
-          >
-            <span className="text-xl">→</span>
-          </button>
-        </div>
-
-        <div className="overflow-hidden">
+        <div 
+          className="overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
             <div 
               className="flex gap-6 lg:gap-8 transition-transform duration-700 ease-out lg:transform-none"
@@ -94,6 +105,8 @@ const Testimonials = () => {
                   className="relative flex-shrink-0 rounded-[45px] overflow-hidden w-full lg:w-auto"
                   style={{ 
                     width: testimonial.featured ? '580px' : '380px',
+                    minWidth: 'calc(100vw - 48px)',
+                    maxWidth: testimonial.featured ? '580px' : '380px',
                     height: '400px',
                     background: '#F7F7F7',
                     padding: testimonial.featured ? '44px' : '36px'
