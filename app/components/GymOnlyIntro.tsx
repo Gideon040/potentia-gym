@@ -18,26 +18,27 @@ const GymOnlyIntro = () => {
           {/* ===== MOBILE LAYOUT ===== */}
           <div className="block lg:hidden">
             {/* Image - Top */}
-            <div 
-              className="relative overflow-hidden shadow-xl mb-6"
-              style={{
-                width: '100%',
-                maxWidth: '370px',
-                height: '378px',
-                borderRadius: '24px',
-                margin: '0 auto'
-              }}
-            >
-              <Image
-                src="/gym only.png"
-                alt="Gym Only Fitness"
-                fill
-                className="object-cover"
-              />
+            <div className="w-full mb-6">
+              <div 
+                className="relative overflow-hidden shadow-xl mx-auto"
+                style={{
+                  width: 'calc(100vw - 40px)',
+                  maxWidth: '350px',
+                  height: '378px',
+                  borderRadius: '24px'
+                }}
+              >
+                <Image
+                  src="/gym only.png"
+                  alt="Gym Only Fitness"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Content - Bottom */}
-            <div className="space-y-5 w-full max-w-[370px] mx-auto">
+            <div className="space-y-5">
               
               {/* Heading */}
               <h2 
@@ -98,7 +99,7 @@ const GymOnlyIntro = () => {
             </div>
           </div>
 
-          {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+          {/* ===== DESKTOP LAYOUT ===== */}
           <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
             
             {/* Left Side - Content */}
@@ -191,25 +192,25 @@ const GymOnlyIntro = () => {
                   />
                 </div>
 
-{/* Small Image 2 - Bottom Left */}
-<div 
-  className="absolute"
-  style={{
-    width: '229px',
-    height: '276px',
-    top: '294px',
-    left: '0px',
-    borderRadius: '24px',
-    overflow: 'hidden'
-  }}
->
-  <Image
-    src="/1 op 12 group.png"
-    alt="Training Equipment"
-    fill
-    className="object-cover"
-  />
-</div>
+                {/* Small Image 2 - Bottom Left */}
+                <div 
+                  className="absolute"
+                  style={{
+                    width: '229px',
+                    height: '276px',
+                    top: '294px',
+                    left: '0px',
+                    borderRadius: '24px',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <Image
+                    src="/1 op 12 group.png"
+                    alt="Training Equipment"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
 
