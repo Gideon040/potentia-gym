@@ -91,7 +91,7 @@ const Header = () => {
                 />
               </Link>
 
-              {/* Mobile CTA Button - Styled like desktop but smaller */}
+              {/* Mobile CTA Button */}
               <button
                 onClick={() => setPopupOpen(true)}
                 className="lg:hidden flex-shrink-0 px-4 py-2 rounded-[45px] border-2 border-gym-gold text-gym-gold uppercase font-bold whitespace-nowrap hover:bg-gym-gold hover:text-[#001427] transition-all duration-300"
@@ -102,7 +102,7 @@ const Header = () => {
                   height: '36px'
                 }}
               >
-                FREE TRIAL LESSON
+                PROEFLES
               </button>
 
               {/* Desktop Navigation */}
@@ -160,29 +160,66 @@ const Header = () => {
                     <div key={item.href}>
                       {/* Menu Item */}
                       {item.hasMegaMenu ? (
-                        <button
-                          onClick={() => setMobileAanbodOpen(!mobileAanbodOpen)}
-                          className="text-white uppercase hover:text-gym-gold transition-colors py-2 flex items-center justify-between w-full"
-                          style={{ 
-                            fontFamily: 'Syne',
-                            fontWeight: 700,
-                            fontSize: '12px',
-                            letterSpacing: '0.15em'
-                          }}
-                        >
-                          {item.label}
-                          <svg 
-                            className={`w-4 h-4 transition-transform duration-300 ${mobileAanbodOpen ? 'rotate-180' : ''}`}
-                            fill="none" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth="2" 
-                            viewBox="0 0 24 24" 
-                            stroke="currentColor"
-                          >
-                            <path d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
+                        <div>
+                          {/* Aanbod met toggle en link */}
+                          <div className="flex items-center justify-between">
+                            <Link
+                              href={item.href}
+                              className="text-white uppercase hover:text-gym-gold transition-colors py-2 flex-1"
+                              style={{ 
+                                fontFamily: 'Syne',
+                                fontWeight: 700,
+                                fontSize: '12px',
+                                letterSpacing: '0.15em'
+                              }}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              onClick={() => setMobileAanbodOpen(!mobileAanbodOpen)}
+                              className="text-white hover:text-gym-gold transition-colors p-2"
+                              aria-label="Toggle submenu"
+                            >
+                              <svg 
+                                className={`w-4 h-4 transition-transform duration-300 ${mobileAanbodOpen ? 'rotate-180' : ''}`}
+                                fill="none" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth="2" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor"
+                              >
+                                <path d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                          </div>
+
+                          {/* Aanbod Submenu */}
+                          {mobileAanbodOpen && (
+                            <div className="mt-3 ml-4 space-y-3 pb-2">
+                              {aanbodItems.map((service) => (
+                                <Link
+                                  key={service.href}
+                                  href={service.href}
+                                  className="block text-gym-gold hover:text-white transition-colors py-2"
+                                  style={{ 
+                                    fontFamily: 'Syne',
+                                    fontWeight: 600,
+                                    fontSize: '11px',
+                                    letterSpacing: '0.1em'
+                                  }}
+                                  onClick={() => {
+                                    setMobileMenuOpen(false);
+                                    setMobileAanbodOpen(false);
+                                  }}
+                                >
+                                  {service.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ) : (
                         <Link
                           href={item.href}
@@ -197,31 +234,6 @@ const Header = () => {
                         >
                           {item.label}
                         </Link>
-                      )}
-
-                      {/* Aanbod Submenu */}
-                      {item.hasMegaMenu && mobileAanbodOpen && (
-                        <div className="mt-3 ml-4 space-y-3 pb-2">
-                          {aanbodItems.map((service) => (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              className="block text-gym-gold hover:text-white transition-colors py-2"
-                              style={{ 
-                                fontFamily: 'Syne',
-                                fontWeight: 600,
-                                fontSize: '11px',
-                                letterSpacing: '0.1em'
-                              }}
-                              onClick={() => {
-                                setMobileMenuOpen(false);
-                                setMobileAanbodOpen(false);
-                              }}
-                            >
-                              {service.label}
-                            </Link>
-                          ))}
-                        </div>
                       )}
                     </div>
                   ))}
