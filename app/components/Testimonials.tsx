@@ -102,11 +102,9 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={index}
-                  className="relative flex-shrink-0 rounded-[45px] overflow-hidden w-full lg:w-auto"
+                  className="relative flex-shrink-0 rounded-[45px] overflow-hidden w-[calc(100vw-48px)] lg:w-auto"
                   style={{ 
                     width: testimonial.featured ? '580px' : '380px',
-                    minWidth: 'calc(100vw - 48px)',
-                    maxWidth: testimonial.featured ? '580px' : '380px',
                     height: '400px',
                     background: '#F7F7F7',
                     padding: testimonial.featured ? '44px' : '36px'

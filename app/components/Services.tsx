@@ -3,7 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Services = () => {
-  const services = [
+  const services: Array<{
+    title: string;
+    image: string;
+    size: 'large' | 'small';
+    href: string;
+  }> = [
     {
       title: 'GYM ONLY',
       image: '/gym only.png',
@@ -145,7 +150,7 @@ const Services = () => {
               <ServiceCard 
                 title={service.title}
                 image={service.image}
-                size="small"
+                size={service.size}
                 href={service.href}
               />
             </div>
