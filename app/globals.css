@@ -5,14 +5,14 @@
 @layer base {
   body {
     @apply bg-[#001427];
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-aeonik-trial), var(--font-inter), system-ui, sans-serif;
     margin: 0;
     padding: 0;
   }
 
   /* H1 - Hero */
   h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-syne), sans-serif;
     font-weight: 700;
     font-size: 65px;
     line-height: 72px;
@@ -21,7 +21,7 @@
 
   /* H2 - Sections */
   h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-syne), sans-serif;
     font-weight: 700;
     font-size: 41px;
     line-height: 100%;
@@ -30,7 +30,7 @@
 
   /* Paragraphs */
   p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-aeonik-trial), var(--font-inter), sans-serif;
     font-weight: 400;
     font-size: 19px;
     line-height: 35px;
@@ -39,7 +39,7 @@
 
   /* Hero paragraph (specifiek) */
   .hero-text {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-aeonik-trial), var(--font-inter), sans-serif;
     font-weight: 400;
     font-size: 22px;
     line-height: 35px;
@@ -48,7 +48,7 @@
 
   /* Buttons */
   button {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-syne), sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;

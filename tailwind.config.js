@@ -16,7 +16,9 @@ module.exports = {
         'gym-gold-light': '#FFCE71',
       },
       fontFamily: {
-        syne: ['Syne', 'sans-serif'],
+        syne: ['var(--font-syne)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
+        aeonik: ['var(--font-aeonik-trial)', 'var(--font-inter)', 'sans-serif'],
       },
       animation: {
         'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
