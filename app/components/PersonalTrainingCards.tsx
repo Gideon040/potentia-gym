@@ -34,7 +34,8 @@ const PersonalTrainingCards = () => {
               key={index}
               className="relative overflow-hidden rounded-[24px] mx-auto"
               style={{
-                width: '370px',
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
                 height: '450px'
               }}
             >
@@ -102,7 +103,7 @@ const PersonalTrainingCards = () => {
           ))}
         </div>
 
-        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        {/* ===== DESKTOP LAYOUT ===== */}
         <div className="hidden lg:flex gap-6 items-stretch justify-center">
           {cards.map((card, index) => (
             <div 

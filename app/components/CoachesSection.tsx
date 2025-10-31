@@ -69,7 +69,7 @@ const CoachesSection = () => {
         
         {/* Heading - MOBILE */}
         <h2 
-          className="block lg:hidden text-white text-center mb-8 px-4"
+          className="block lg:hidden text-white text-center mb-8"
           style={{
             fontFamily: 'Syne',
             fontWeight: 700,
@@ -100,7 +100,8 @@ const CoachesSection = () => {
               key={index}
               className="relative overflow-hidden rounded-[24px] mx-auto"
               style={{
-                width: '370px',
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
                 height: '450px'
               }}
             >

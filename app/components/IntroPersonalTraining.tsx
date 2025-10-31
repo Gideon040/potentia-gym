@@ -18,24 +18,27 @@ const IntroPersonalTraining = () => {
           {/* ===== MOBILE LAYOUT ===== */}
           <div className="block lg:hidden py-12">
             {/* Image - Top */}
-            <div 
-              className="relative overflow-hidden shadow-xl mb-6 mx-auto"
-              style={{
-                width: '370px',
-                height: '378px',
-                borderRadius: '24px'
-              }}
-            >
-              <Image
-                src="/about-team-large.png"
-                alt="Personal Training"
-                fill
-                className="object-cover"
-              />
+            <div className="w-full mb-6">
+              <div 
+                className="relative overflow-hidden shadow-xl mx-auto"
+                style={{
+                  width: 'calc(100vw - 40px)',
+                  maxWidth: '350px',
+                  height: '378px',
+                  borderRadius: '24px'
+                }}
+              >
+                <Image
+                  src="/about-team-large.png"
+                  alt="Personal Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Content - Bottom */}
-            <div className="space-y-5 max-w-[370px] mx-auto">
+            <div className="space-y-5">
               
               {/* Heading with Arrow */}
               <div className="flex items-center gap-3">
@@ -108,7 +111,7 @@ const IntroPersonalTraining = () => {
             </div>
           </div>
 
-          {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+          {/* ===== DESKTOP LAYOUT ===== */}
           <div className="relative h-full hidden lg:block">
           
             {/* Content Container - Left Side */}
