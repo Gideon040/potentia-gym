@@ -13,24 +13,27 @@ const IntroReformerPilates = () => {
         {/* ===== MOBILE LAYOUT ===== */}
         <div className="block lg:hidden py-12">
           {/* Image - Top */}
-          <div 
-            className="relative overflow-hidden shadow-xl mb-6 mx-auto"
-            style={{
-              width: '370px',
-              height: '378px',
-              borderRadius: '24px'
-            }}
-          >
-            <Image
-              src="/about-team-large.png"
-              alt="Reformer Pilates Training"
-              fill
-              className="object-cover"
-            />
+          <div className="w-full mb-6">
+            <div 
+              className="relative overflow-hidden shadow-xl mx-auto"
+              style={{
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
+                height: '378px',
+                borderRadius: '24px'
+              }}
+            >
+              <Image
+                src="/about-team-large.png"
+                alt="Reformer Pilates Training"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
           {/* Content - Bottom */}
-          <div className="space-y-5 max-w-[370px] mx-auto">
+          <div className="space-y-5">
             
             {/* Heading with Arrow */}
             <div className="flex items-center gap-3">
@@ -72,17 +75,25 @@ const IntroReformerPilates = () => {
 
             {/* Button - Full Width */}
             <div className="pt-2">
-              <Link href="/contact">
-                <PrimaryButton variant="solid" className="w-full">
+              <Link href="/contact" className="block">
+                <button 
+                  className="w-full bg-[#E1AC46] text-[#002444] rounded-[45px] font-bold uppercase transition-all duration-300 hover:bg-[#FFCE71] active:scale-95"
+                  style={{
+                    height: '46px',
+                    fontFamily: 'Syne',
+                    fontSize: '12px',
+                    letterSpacing: '0.15em'
+                  }}
+                >
                   CONTACT ONS TEAM
-                </PrimaryButton>
+                </button>
               </Link>
             </div>
             
           </div>
         </div>
 
-        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        {/* ===== DESKTOP LAYOUT ===== */}
         <div className="relative h-full hidden lg:block">
         
           {/* Content Container - Left Side */}
