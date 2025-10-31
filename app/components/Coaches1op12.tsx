@@ -57,7 +57,7 @@ const Coaches1op12 = () => {
         
         {/* Heading - MOBILE */}
         <h2 
-          className="block lg:hidden text-gym-navy text-center mb-8 px-4"
+          className="block lg:hidden text-gym-navy text-center mb-8"
           style={{
             fontFamily: 'Syne',
             fontWeight: 700,
@@ -88,7 +88,8 @@ const Coaches1op12 = () => {
               key={index}
               className="relative overflow-hidden rounded-[24px] mx-auto"
               style={{
-                width: '370px',
+                width: 'calc(100vw - 40px)',
+                maxWidth: '350px',
                 height: '450px'
               }}
             >
@@ -157,7 +158,7 @@ const Coaches1op12 = () => {
           ))}
         </div>
 
-        {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+        {/* ===== DESKTOP LAYOUT ===== */}
         <div className="hidden lg:flex flex-wrap gap-6 items-start justify-center">
           {coaches.map((coach, index) => (
             <div

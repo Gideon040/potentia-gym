@@ -18,24 +18,27 @@ const Intro1op12 = () => {
           {/* ===== MOBILE LAYOUT ===== */}
           <div className="block lg:hidden">
             {/* Image - Top */}
-            <div 
-              className="relative overflow-hidden shadow-xl mb-6 mx-auto"
-              style={{
-                width: '370px',
-                height: '378px',
-                borderRadius: '24px'
-              }}
-            >
-              <Image
-                src="/1 op 12 group.png"
-                alt="Group Training"
-                fill
-                className="object-cover"
-              />
+            <div className="w-full mb-6">
+              <div 
+                className="relative overflow-hidden shadow-xl mx-auto"
+                style={{
+                  width: 'calc(100vw - 40px)',
+                  maxWidth: '350px',
+                  height: '378px',
+                  borderRadius: '24px'
+                }}
+              >
+                <Image
+                  src="/1 op 12 group.png"
+                  alt="Group Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Content - Bottom */}
-            <div className="space-y-5 max-w-[370px] mx-auto">
+            <div className="space-y-5">
               
               {/* Heading */}
               <h2 
@@ -95,7 +98,7 @@ const Intro1op12 = () => {
             </div>
           </div>
 
-          {/* ===== DESKTOP LAYOUT: EXACT ORIGINEEL ===== */}
+          {/* ===== DESKTOP LAYOUT ===== */}
           <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
             
             {/* Left Side - Content */}
